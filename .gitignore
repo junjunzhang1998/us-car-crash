@@ -1,0 +1,26 @@
+# Raw & intermediate data
+data/raw/
+data/intermediate/
+
+# Processed data (decide later)
+data/processed/*.csv
+
+# Models
+models/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
+
+# Env
+.env
