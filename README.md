@@ -21,6 +21,7 @@ CRSS schemas vary across years. To ensure consistency and avoid schema drift, th
 - Injury outcomes are measured using injury severity codes (INJSEV_IM). 
 - Geographic identifiers are not consistently available across all years; analysis is therefore conducted at the national level.
 - Derived variables (e.g., any injury, severe injury, speeding involvement) are created during analysis as needed.
+- The primary modeling target is a binary indicator of severe injury, defined as incapacitating injury (severity level 3) or fatal injury (severity level 4) based on CRSS injury severity codes. Fatal-only and any-injury indicators are constructed for exploratory analysis but are not used as primary modeling targets due to class imbalance and interpretability considerations.
 
 ### Data paths used in notebooks
 All notebooks assume they are run from the `notebooks/` directory and define paths relative to the project root:
@@ -35,3 +36,4 @@ Raw CRSS CSV files are intentionally excluded from version control via
 2. Place them under:
    `data/raw/<year>/`
 3. Run notebooks in numerical order from the `notebooks/` directory
+
