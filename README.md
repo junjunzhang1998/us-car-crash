@@ -1,39 +1,91 @@
-# US Car Crash Injury Severity (CRSS)
+# ???? Severe Injury Risk Prediction (CRSS)
 
-This project analyzes U.S. crash data from the NHTSA Crash Report Sampling System (CRSS)
-to predict driver injury severity and identify high-risk crash factors.
+Predicts whether a traffic crash results in **severe injury (incapacitating or fatal)** using U.S. crash data from the NHTSA CRSS.
 
-**Data:** NHTSA Crash Report Sampling System (2019–2023)  
-**Unit of analysis:** Driver-level  
-**Scope:** National-level crash injury severity analysis
+???? **Live app:** https://us-car-crash-prediction.streamlit.app/  
+???? **Model development notebook:**  
+https://github.com/junjunzhang1998/us-car-crash/blob/main/notebooks/modeling.ipynb
 
-### Overview
-**Data Overview**
-This project analyzes U.S. motor vehicle crash data from the NHTSA Crash Report Sampling System (CRSS) covering 2019–2023. CRSS provides nationally representative crash, vehicle, and person-level data. Raw data files are not included in this repository due to size and licensing constraints. 
+---
 
-**Data Cleaning & Preparation**
-CRSS schemas vary across years. To ensure consistency and avoid schema drift, the data pipeline follows these principles:
-- Yearly CRSS tables were merged into single annual datasets.
-- A strict multi-year panel was constructed by retaining only variables that appear in all years (2019–2023). Variables introduced, renamed, or unused in certain years were excluded.
-- The final dataset contains 468,311 observations and 316 consistently defined variables.
+## Overview
 
-**Key Variables & Design Choices**
-- Injury outcomes are measured using injury severity codes (INJSEV_IM). 
-- Geographic identifiers are not consistently available across all years; analysis is therefore conducted at the national level.
-- Derived variables (e.g., any injury, severe injury, speeding involvement) are created during analysis as needed.
-- The primary modeling target is a binary indicator of severe injury, defined as incapacitating injury (severity level 3) or fatal injury (severity level 4) based on CRSS injury severity codes. Fatal-only and any-injury indicators are constructed for exploratory analysis but are not used as primary modeling targets due to class imbalance and interpretability considerations.
+This project builds an end-to-end machine learning pipeline using U.S. crash data from 2019???2023.  
+The goal is to model **rare but high-impact severe injuries** using interpretable and deployable models.
 
-### Data paths used in notebooks
-All notebooks assume they are run from the `notebooks/` directory and define paths relative to the project root:
-- Raw data: `data/raw/`
-- Intermediate merged data: `data/intermediate/`
-- Processed/model-ready data: `data/processed/`
+The workflow covers data preparation, modeling, evaluation, and deployment via Streamlit.
 
-Raw CRSS CSV files are intentionally excluded from version control via
-`.gitignore`. To reproduce the analysis:
+---
 
-1. Download CRSS PERSON.csv, VEHICLE.csv, and ACCIDENT.csv files for years 2019–2023
-2. Place them under:
-   `data/raw/<year>/`
-3. Run notebooks in numerical order from the `notebooks/` directory
+## Data
 
+Source: **NHTSA Crash Report Sampling System (CRSS)**
+
+Raw, intermediate, and processed datasets are documented in the `data/` subfolders.  
+Each folder contains a README describing structure, preprocessing, and transformations.
+
+---
+
+## Target
+
+Binary outcome:
+
+- `1` ??? Severe injury (incapacitating or fatal)
+- `0` ??? Non-severe injury
+
+This is a highly imbalanced classification problem.
+
+---
+
+## Models Tested
+
+- Logistic Regression (baseline, interpretable)
+- Random Forest
+- Gradient Boosting (**final deployed model**)
+
+Evaluation emphasizes **PR-AUC**, which is more informative for rare outcomes than accuracy.
+
+---
+
+## Features Used
+
+- Driver demographics  
+- Vehicle type  
+- Restraint and airbag indicators  
+- Roadway relationship  
+- Weather and time variables  
+
+Categorical variables are encoded using preprocessing pipelines to prevent leakage.
+
+---
+
+## Streamlit App
+
+The interactive app allows users to:
+
+- Input crash characteristics  
+- Adjust the classification threshold  
+- View predicted probability of severe injury  
+- See HIGH / LOW risk labels  
+- Inspect SHAP-based local explanations  
+
+???? https://us-car-crash-prediction.streamlit.app/
+
+---
+
+## Tech Stack
+
+- Python 3.12  
+- pandas, numpy  
+- scikit-learn  
+- matplotlib  
+- SHAP  
+- Streamlit  
+
+---
+
+## Author
+
+**JJ Zhang**  
+M.S. in Data Science, Columbia University  
+GitHub: https://github.com/junjunzhang1998
