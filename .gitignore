@@ -1,9 +1,11 @@
 # Raw & intermediate data
-data/raw/
-data/intermediate/
+# Ignore CSV data files
+data/raw/**/*.csv
+data/intermediate/**/*.csv
+data/processed/**/*.csv
 
-# Processed data (decide later)
-data/processed/*.csv
+# Allow README files
+!data/**/README.md
 
 # Jupyter
 .ipynb_checkpoints/
