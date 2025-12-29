@@ -11,7 +11,7 @@ https://github.com/junjunzhang1998/us-car-crash/blob/main/notebooks/04_modeling.
 
 ## Overview
 
-This project builds an end-to-end machine learning pipeline using U.S. crash data from 2019???2023.  
+This project builds an end-to-end machine learning pipeline using U.S. crash data from 2019 - 2023.  
 The goal is to model rare but high-impact severe injuries using interpretable and deployable models.
 
 The workflow covers data preparation, modeling, evaluation, and deployment through a Streamlit web application.
