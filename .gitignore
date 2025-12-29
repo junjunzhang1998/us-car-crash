@@ -5,9 +5,6 @@ data/intermediate/
 # Processed data (decide later)
 data/processed/*.csv
 
-# Models
-models/
-
 # Jupyter
 .ipynb_checkpoints/
 
@@ -19,8 +16,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Streamlit
-.streamlit/
 
 # Env
 .env
