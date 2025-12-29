@@ -2,30 +2,23 @@
 
 This folder contains cleaned, transformed datasets used directly for modeling and analysis.
 
-These files are derived from the intermediate merged data after:
-- filtering
-- feature selection
-- harmonization across years
-- creation of modeling targets
-- basic preprocessing
-
 ---
 
 ## Files
 
+```text
 data/processed/
 ├── crss_panel_2019_2023.csv
 ├── crss_modeling_severe.csv
-
+```
 ---
 
 ## File Descriptions
 
 ### `crss_panel_2019_2023.csv`
 
-A consolidated panel dataset spanning multiple years (2019–2023).
+A consolidated panel dataset spanning multiple years (2019–2023), including:
 
-Includes:
 - Harmonized variable definitions across years
 - Cleaned categorical codes
 - Consistent feature naming
@@ -36,21 +29,12 @@ Includes:
 
 ### `crss_modeling_severe.csv`
 
-Final modeling dataset used for machine learning.
+Final modeling dataset used for machine learning.Key characteristics:
 
-Key characteristics:
 - Binary target variable indicating **severe injury** (incapacitating or fatal)
+  - `1` → incapacitating or fatal injury  
+  - `0` → non-severe injury  
 - Cleaned and standardized columns
-
----
-
-## Target Variable
-
-**Severe injury indicator**:
-- `1` → incapacitating or fatal injury  
-- `0` → non-severe injury  
-
-This label is derived from CRSS injury severity codes.
 
 ---
 
@@ -66,7 +50,7 @@ This label is derived from CRSS injury severity codes.
 raw/
 → intermediate/
 → processed/
-→ modeling + Streamlit app
+→ modeling notebook + Streamlit app
 
 
 This structure ensures reproducibility, transparency, and separation of concerns.
