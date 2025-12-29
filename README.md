@@ -1,19 +1,20 @@
-# ???? Severe Injury Risk Prediction (CRSS)
+# Severe Injury Risk Prediction (CRSS)
 
-Predicts whether a traffic crash results in **severe injury (incapacitating or fatal)** using U.S. crash data from the NHTSA CRSS.
+Predicts whether a traffic crash results in severe injury (incapacitating or fatal) using U.S. crash data from the NHTSA Crash Report Sampling System (CRSS).
 
-???? **Live app:** https://us-car-crash-prediction.streamlit.app/  
-???? **Model development notebook:**  
-https://github.com/junjunzhang1998/us-car-crash/blob/main/notebooks/modeling.ipynb
+**Live app**: https://us-car-crash-prediction.streamlit.app/  
+
+**Model development notebook**:  
+https://github.com/junjunzhang1998/us-car-crash/blob/main/notebooks/04_modeling.ipynb
 
 ---
 
 ## Overview
 
 This project builds an end-to-end machine learning pipeline using U.S. crash data from 2019???2023.  
-The goal is to model **rare but high-impact severe injuries** using interpretable and deployable models.
+The goal is to model rare but high-impact severe injuries using interpretable and deployable models.
 
-The workflow covers data preparation, modeling, evaluation, and deployment via Streamlit.
+The workflow covers data preparation, modeling, evaluation, and deployment through a Streamlit web application.
 
 ---
 
@@ -22,7 +23,7 @@ The workflow covers data preparation, modeling, evaluation, and deployment via S
 Source: **NHTSA Crash Report Sampling System (CRSS)**
 
 Raw, intermediate, and processed datasets are documented in the `data/` subfolders.  
-Each folder contains a README describing structure, preprocessing, and transformations.
+Each folder contains a README describing its contents and preprocessing steps.
 
 ---
 
@@ -30,8 +31,8 @@ Each folder contains a README describing structure, preprocessing, and transform
 
 Binary outcome:
 
-- `1` ??? Severe injury (incapacitating or fatal)
-- `0` ??? Non-severe injury
+- `1` -> Severe injury (incapacitating or fatal)  
+- `0` -> Non-severe injury  
 
 This is a highly imbalanced classification problem.
 
@@ -41,9 +42,9 @@ This is a highly imbalanced classification problem.
 
 - Logistic Regression (baseline, interpretable)
 - Random Forest
-- Gradient Boosting (**final deployed model**)
+- Gradient Boosting (final deployed model)
 
-Evaluation emphasizes **PR-AUC**, which is more informative for rare outcomes than accuracy.
+Evaluation focuses on PR-AUC, which is more informative than accuracy for rare outcomes.
 
 ---
 
@@ -55,21 +56,21 @@ Evaluation emphasizes **PR-AUC**, which is more informative for rare outcomes th
 - Roadway relationship  
 - Weather and time variables  
 
-Categorical variables are encoded using preprocessing pipelines to prevent leakage.
+Categorical variables are encoded through preprocessing pipelines.
 
 ---
 
-## Streamlit App
+## Streamlit Application
 
-The interactive app allows users to:
+The app allows users to:
 
 - Input crash characteristics  
 - Adjust the classification threshold  
 - View predicted probability of severe injury  
-- See HIGH / LOW risk labels  
+- See HIGH / LOW risk classification  
 - Inspect SHAP-based local explanations  
 
-???? https://us-car-crash-prediction.streamlit.app/
+Live demo: https://us-car-crash-prediction.streamlit.app/
 
 ---
 
